@@ -1,0 +1,644 @@
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+input _AddScapholdIntegrationInput {
+  name: String
+  type: _IntegrationTypeEnum!
+  config: AnyObject
+  clientMutationId: String
+}
+
+type _AddScapholdIntegrationPayload {
+  id: String!
+  name: String
+  type: _IntegrationTypeEnum!
+  config: AnyObject
+  clientMutationId: String
+}
+
+input _CreateHackerNewsItemInput {
+  title: String!
+  score: Int
+  url: String
+  authorId: ID
+  clientMutationId: String
+}
+
+type _CreateHackerNewsItemPayload {
+  changedHackerNewsItem: HackerNewsItem
+  changedHackerNewsItemEdge: _HackerNewsItemEdge
+  clientMutationId: String
+}
+
+input _CreateHackNewsItemInput {
+  title: String!
+  score: Int
+  url: String
+  authorId: ID
+  clientMutationId: String
+}
+
+type _CreateHackNewsItemPayload {
+  changedHackNewsItem: HackNewsItem
+  changedHackNewsItemEdge: _HackNewsItemEdge
+  clientMutationId: String
+}
+
+input _CreateRoleInput {
+  name: String!
+  accessLevel: _ScapholdRoleAccessLevel
+  clientMutationId: String
+}
+
+type _CreateRolePayload {
+  name: String!
+  accessLevel: _ScapholdRoleAccessLevel
+  clientMutationId: String
+}
+
+input _CreateUserInput {
+  username: String!
+  password: Secret!
+  clientMutationId: String
+}
+
+type _CreateUserPayload {
+  token: String
+  changedUser: User
+  changedUserEdge: _UserEdge
+  clientMutationId: String
+}
+
+input _DeleteHackerNewsItemInput {
+  id: ID
+  clientMutationId: String
+}
+
+type _DeleteHackerNewsItemPayload {
+  changedHackerNewsItem: HackerNewsItem
+  changedHackerNewsItemEdge: _HackerNewsItemEdge
+  clientMutationId: String
+}
+
+input _DeleteHackNewsItemInput {
+  id: ID
+  clientMutationId: String
+}
+
+type _DeleteHackNewsItemPayload {
+  changedHackNewsItem: HackNewsItem
+  changedHackNewsItemEdge: _HackNewsItemEdge
+  clientMutationId: String
+}
+
+input _DeleteRoleInput {
+  name: String!
+  clientMutationId: String
+}
+
+type _DeleteRolePayload {
+  name: String!
+  accessLevel: _ScapholdRoleAccessLevel
+  clientMutationId: String
+}
+
+input _DeleteScapholdIntegrationInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type _DeleteScapholdIntegrationPayload {
+  id: String!
+  name: String
+  type: _IntegrationTypeEnum!
+  config: AnyObject
+  clientMutationId: String
+}
+
+input _DeleteUserInput {
+  id: ID
+  clientMutationId: String
+}
+
+type _DeleteUserPayload {
+  changedUser: User
+  changedUserEdge: _UserEdge
+  clientMutationId: String
+}
+
+input _DisenrollUserInput {
+  role: String!
+  userId: ID!
+  isAdmin: Boolean = false
+  clientMutationId: String
+}
+
+type _DisenrollUserPayload {
+  role: String!
+  userId: ID!
+  isAdmin: Boolean
+  clientMutationId: String
+}
+
+input _EnrollUserInput {
+  role: String!
+  userId: ID!
+  isAdmin: Boolean = false
+  clientMutationId: String
+}
+
+type _EnrollUserPayload {
+  role: String!
+  userId: ID!
+  isAdmin: Boolean
+  clientMutationId: String
+}
+
+input _FilterHackerNewsItemInput {
+  id: ID
+  title: String
+  score: Int
+  url: String
+  authorId: ID
+}
+
+input _FilterHackNewsItemInput {
+  id: ID
+  title: String
+  score: Int
+  url: String
+  authorId: ID
+}
+
+input _FilterUserInput {
+  id: ID
+  username: String
+}
+
+type _HackerNewsItemConnection {
+  edges: [_HackerNewsItemEdge]
+  pageInfo: PageInfo
+  count(groupBy: String): [_ScapholdAggregate]
+  max(groupBy: String, field: String!): [_ScapholdAggregate]
+  min(groupBy: String, field: String!): [_ScapholdAggregate]
+  avg(groupBy: String, field: String!): [_ScapholdAggregate]
+  sum(groupBy: String, field: String!): [_ScapholdAggregate]
+}
+
+type _HackerNewsItemEdge {
+  node: HackerNewsItem
+  cursor: String
+}
+
+enum _HackerNewsItemTransactionTypes {
+  CREATE
+  UPDATE
+  DELETE
+}
+
+type _HackNewsItemConnection {
+  edges: [_HackNewsItemEdge]
+  pageInfo: PageInfo
+  count(groupBy: String): [_ScapholdAggregate]
+  max(groupBy: String, field: String!): [_ScapholdAggregate]
+  min(groupBy: String, field: String!): [_ScapholdAggregate]
+  avg(groupBy: String, field: String!): [_ScapholdAggregate]
+  sum(groupBy: String, field: String!): [_ScapholdAggregate]
+}
+
+type _HackNewsItemEdge {
+  node: HackNewsItem
+  cursor: String
+}
+
+enum _HackNewsItemTransactionTypes {
+  CREATE
+  UPDATE
+  DELETE
+}
+
+enum _IntegrationTypeEnum {
+  Mailgun
+  Slack
+  Twitter
+  iOSPush
+  Stripe
+  Auth0
+  Algolia
+  Digits
+  Custom
+}
+
+input _LoginUserInput {
+  username: String!
+  password: String!
+  clientMutationId: String
+}
+
+type _LoginUserPayload {
+  id: ID!
+  token: String!
+  clientMutationId: String
+}
+
+input _MigrateScapholdFieldInput {
+  name: String
+  description: String
+  type: String
+  ofType: String
+  nonNull: Boolean
+  unique: Boolean
+  reverseName: String
+  defaultValue: AnyObject
+}
+
+input _MigrateScapholdPermissionInput {
+  create: Boolean
+  read: Boolean
+  update: Boolean
+  delete: Boolean
+  replace: Boolean
+  scope: _ScapholdPermissionScope!
+  roles: [String]
+  userFields: [String]
+}
+
+input _MigrateScapholdTypeInput {
+  name: String!
+  kind: _ScapholdTypeKind
+  description: String
+  fields: [_MigrateScapholdFieldInput]
+  interfaces: [String]
+  permissions: [_MigrateScapholdPermissionInput]
+  isSearchable: Boolean
+}
+
+input _MigrateSchemaInput {
+  commit: Boolean
+  name: String
+  description: String
+  types: [_MigrateScapholdTypeInput]
+  clientMutationId: String
+}
+
+type _MigrateSchemaPayload {
+  schema: _ScapholdSchema
+  migrationSteps: [_ScapholdMigrationStep]
+  committed: Boolean
+  clientMutationId: String
+}
+
+type _ScapholdAggregate {
+  group: AnyObject
+  reduction: AnyObject
+}
+
+type _ScapholdEnrollment {
+  role: String!
+  userId: ID!
+  isAdmin: Boolean
+}
+
+type _ScapholdField {
+  name: String!
+  description: String
+  type: String!
+  ofType: String
+  nonNull: Boolean
+  unique: Boolean
+  reverseName: String
+  defaultValue: AnyObject
+}
+
+type _ScapholdIntegration {
+  id: String!
+  name: String
+  type: _IntegrationTypeEnum!
+  config: AnyObject
+}
+
+type _ScapholdIntegrationTemplate {
+  defaults: AnyObject
+  fields: [_ScapholdIntegrationTemplateField]
+  icon: String
+  name: String!
+  description: String!
+  shortDescription: String!
+  type: _IntegrationTypeEnum!
+}
+
+type _ScapholdIntegrationTemplateField {
+  description: String
+  label: String!
+  name: String!
+  required: Boolean
+  listValues: [_ScapholdIntegrationTemplateField]
+  type: _ScapholdIntegrationTemplateFieldTypes!
+}
+
+enum _ScapholdIntegrationTemplateFieldTypes {
+  String
+  Number
+  Boolean
+  File
+  List
+  Secret
+}
+
+type _ScapholdMigrationStep {
+  operation: _ScapholdMutationStepOperation!
+  entity: _ScapholdMigrationStepEntity!
+  path: [String]
+}
+
+enum _ScapholdMigrationStepEntity {
+  SCHEMA
+  TYPE
+  FIELD
+  SUB_FIELD
+}
+
+enum _ScapholdMutationStepOperation {
+  ADD
+  EDIT
+  DELETE
+  APPEND
+}
+
+type _ScapholdPermission {
+  create: Boolean
+  read: Boolean
+  update: Boolean
+  delete: Boolean
+  replace: Boolean
+  scope: _ScapholdPermissionScope!
+  roles: [String]
+  userFields: [String]
+}
+
+enum _ScapholdPermissionScope {
+  EVERYONE
+  AUTHENTICATED
+  RELATED
+  ROLE
+}
+
+type _ScapholdRole {
+  name: String!
+  accessLevel: _ScapholdRoleAccessLevel
+}
+
+enum _ScapholdRoleAccessLevel {
+  public
+  private
+}
+
+type _ScapholdSchema {
+  id: ID!
+  name: String!
+  description: String
+  types: [_ScapholdType]
+  backupsEnabled: Boolean
+  version: Int
+  alias: String
+  subscription: _ScapholdSubscription
+  createdAt: String
+  modifiedAt: String
+}
+
+type _ScapholdSubscription {
+  id: ID
+  subscriptionId: String
+  datasetId: ID
+  planName: String
+  status: String
+}
+
+type _ScapholdType {
+  id: ID!
+  name: String!
+  kind: _ScapholdTypeKind!
+  description: String
+  fields: [_ScapholdField]
+  interfaces: [String]
+  permissions: [_ScapholdPermission]
+  isSearchable: Boolean
+}
+
+enum _ScapholdTypeKind {
+  OBJECT
+}
+
+input _SubscribeToHackerNewsItemsInput {
+  channel: String!
+  transactionTypes: [_HackerNewsItemTransactionTypes]
+  filter: _FilterHackerNewsItemInput = {}
+  clientSubscriptionId: String
+}
+
+type _SubscribeToHackerNewsItemsPayload {
+  changedHackerNewsItem: HackerNewsItem
+  changedHackerNewsItemEdge: _HackerNewsItemEdge
+  clientSubscriptionId: String
+}
+
+input _SubscribeToHackNewsItemsInput {
+  channel: String!
+  transactionTypes: [_HackNewsItemTransactionTypes]
+  filter: _FilterHackNewsItemInput = {}
+  clientSubscriptionId: String
+}
+
+type _SubscribeToHackNewsItemsPayload {
+  changedHackNewsItem: HackNewsItem
+  changedHackNewsItemEdge: _HackNewsItemEdge
+  clientSubscriptionId: String
+}
+
+input _SubscribeToUsersInput {
+  channel: String!
+  transactionTypes: [_UserTransactionTypes]
+  filter: _FilterUserInput = {}
+  clientSubscriptionId: String
+}
+
+type _SubscribeToUsersPayload {
+  changedUser: User
+  changedUserEdge: _UserEdge
+  clientSubscriptionId: String
+}
+
+input _UpdateHackerNewsItemInput {
+  id: ID!
+  title: String
+  score: Int
+  url: String
+  authorId: ID
+  clientMutationId: String
+}
+
+type _UpdateHackerNewsItemPayload {
+  changedHackerNewsItem: HackerNewsItem
+  changedHackerNewsItemEdge: _HackerNewsItemEdge
+  clientMutationId: String
+}
+
+input _UpdateHackNewsItemInput {
+  id: ID!
+  title: String
+  score: Int
+  url: String
+  authorId: ID
+  clientMutationId: String
+}
+
+type _UpdateHackNewsItemPayload {
+  changedHackNewsItem: HackNewsItem
+  changedHackNewsItemEdge: _HackNewsItemEdge
+  clientMutationId: String
+}
+
+input _UpdateScapholdIntegrationInput {
+  id: String!
+  name: String
+  type: _IntegrationTypeEnum
+  config: AnyObject
+  clientMutationId: String
+}
+
+type _UpdateScapholdIntegrationPayload {
+  id: String!
+  name: String
+  type: _IntegrationTypeEnum!
+  config: AnyObject
+  clientMutationId: String
+}
+
+input _UpdateUserInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type _UpdateUserPayload {
+  changedUser: User
+  changedUserEdge: _UserEdge
+  clientMutationId: String
+}
+
+type _UserConnection {
+  edges: [_UserEdge]
+  pageInfo: PageInfo
+  count(groupBy: String): [_ScapholdAggregate]
+  max(groupBy: String, field: String!): [_ScapholdAggregate]
+  min(groupBy: String, field: String!): [_ScapholdAggregate]
+  avg(groupBy: String, field: String!): [_ScapholdAggregate]
+  sum(groupBy: String, field: String!): [_ScapholdAggregate]
+}
+
+type _UserEdge {
+  node: User
+  cursor: String
+}
+
+enum _UserTransactionTypes {
+  CREATE
+  UPDATE
+  DELETE
+}
+
+scalar AnyObject
+
+scalar DateTime
+
+type HackerNewsItem implements Node {
+  id: ID!
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+  title: String!
+  score: Int
+  url: String
+  author: User
+}
+
+type HackNewsItem implements Node {
+  id: ID!
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+  title: String!
+  score: Int
+  url: String
+  author: User
+}
+
+type Mutation {
+  migrateSchema(input: _MigrateSchemaInput!): _MigrateSchemaPayload
+  createRole(input: _CreateRoleInput!): _CreateRolePayload
+  deleteRole(input: _DeleteRoleInput!): _DeleteRolePayload
+  enrollUser(input: _EnrollUserInput!): _EnrollUserPayload
+  disenrollUser(input: _DisenrollUserInput!): _DisenrollUserPayload
+  createUser(input: _CreateUserInput!): _CreateUserPayload
+  updateUser(input: _UpdateUserInput!): _UpdateUserPayload
+  deleteUser(input: _DeleteUserInput!): _DeleteUserPayload
+  loginUser(input: _LoginUserInput!): _LoginUserPayload
+  createHackNewsItem(input: _CreateHackNewsItemInput!): _CreateHackNewsItemPayload
+  updateHackNewsItem(input: _UpdateHackNewsItemInput!): _UpdateHackNewsItemPayload
+  deleteHackNewsItem(input: _DeleteHackNewsItemInput!): _DeleteHackNewsItemPayload
+  createHackerNewsItem(input: _CreateHackerNewsItemInput!): _CreateHackerNewsItemPayload
+  updateHackerNewsItem(input: _UpdateHackerNewsItemInput!): _UpdateHackerNewsItemPayload
+  deleteHackerNewsItem(input: _DeleteHackerNewsItemInput!): _DeleteHackerNewsItemPayload
+  addIntegration(input: _AddScapholdIntegrationInput!): _AddScapholdIntegrationPayload
+  updateIntegration(input: _UpdateScapholdIntegrationInput!): _UpdateScapholdIntegrationPayload
+  deleteIntegration(input: _DeleteScapholdIntegrationInput!): _DeleteScapholdIntegrationPayload
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+  count: Int
+}
+
+type Query {
+  node(id: ID!): Node
+  getRole(role: String!): _ScapholdRole
+  getUser(id: ID!): User
+  getUserByUsername(username: String!): User
+  getHackNewsItem(id: ID!): HackNewsItem
+  getHackerNewsItem(id: ID!): HackerNewsItem
+  viewer: Viewer
+  allIntegrationTemplates: [_ScapholdIntegrationTemplate]
+  allActiveIntegrations: [_ScapholdIntegration]
+}
+
+scalar Secret
+
+type Subscription {
+  subscribeToUsers(input: _SubscribeToUsersInput!): _SubscribeToUsersPayload
+  subscribeToHackNewsItems(input: _SubscribeToHackNewsItemsInput!): _SubscribeToHackNewsItemsPayload
+  subscribeToHackerNewsItems(input: _SubscribeToHackerNewsItemsInput!): _SubscribeToHackerNewsItemsPayload
+}
+
+type User implements Node {
+  id: ID!
+  username: String!
+  roles: [_ScapholdEnrollment]
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+  lastLogin: DateTime!
+  hackNewsItems(after: String, first: Int, before: String, last: Int, orderBy: String): _HackNewsItemConnection
+  hackerNewsItems(after: String, first: Int, before: String, last: Int, orderBy: String): _HackerNewsItemConnection
+}
+
+type Viewer {
+  allUsers(after: String, first: Int, before: String, last: Int, orderBy: String): _UserConnection
+  user: User
+  allHackNewsItems(after: String, first: Int, before: String, last: Int, orderBy: String): _HackNewsItemConnection
+  allHackerNewsItems(after: String, first: Int, before: String, last: Int, orderBy: String): _HackerNewsItemConnection
+  allRoles: [_ScapholdRole]
+}

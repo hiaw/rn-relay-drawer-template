@@ -3,11 +3,11 @@ import Relay from 'react-relay';
 export default class HomeRoute extends Relay.Route {
   static routeName = 'HomeRoute';
   static queries = {
-    allProducts: (Component, variables) => {
+    allHackerNewsItems: (Component, variables) => {
       return Relay.QL `
         query {
           viewer {
-            ${Component.getFragment('allProducts', {orderBy: variables.orderBy})}
+            ${Component.getFragment('allHackerNewsItems', {orderBy: variables.orderBy})}
           }
         }
       `

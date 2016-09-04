@@ -18,32 +18,27 @@ class MainPage extends React.Component {
   }
 }
 
-export default Relay.createContainer(MainPage, {
+export default Relay.createContainer(Home, {
   initialVariables: {
-    orderBy: null,
-    size: 5
+    orderBy: null
   },
   fragments: {
-    allProducts: (variables) => {
+    allHackerNewsItems: (variables) => {
       return Relay.QL `
         fragment on Viewer {
-          allItems (first: $size, orderBy: $orderBy) {
+          allHackerNewsItems (first: 10, orderBy: $orderBy) {
             edges {
               node {
-                id
-                createdAt
-                originCountry
-                user {
-                  id
+                id,
+                createdAt,
+                modifiedAt,
+                title,
+                score,
+                url,
+                author {
+                  id,
+                  username
                 }
-                image {
-                  url
-                }
-                name
-                description
-                average_rating
-                rating_count
-                quantity
               }
             }
           }

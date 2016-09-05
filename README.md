@@ -1,6 +1,6 @@
 React Native working with RNRF, drawer and relay
 
-![Image][./image.png "screenshot"]
+![Image](./image.png "screenshot")
 
 This template allows Relay to work with react-native-drawer, bypassing babel issues. Also included react-native-router-flux for easier routing.
 

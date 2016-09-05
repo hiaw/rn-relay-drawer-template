@@ -7,9 +7,9 @@ const {
 } = require('graphql/utilities')
 const path = require('path')
 const schemaPath = path.join(__dirname, 'schema')
-var config = require('./../config')
+var publicURL = require('./../App/Navigation/publicURL.js')
 
-const SERVER = config.scapholdUrl
+const SERVER = publicURL
 
 // Save JSON of full schema introspection for Babel Relay Plugin to use
 fetch(`${SERVER}`, {

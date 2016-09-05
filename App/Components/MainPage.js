@@ -2,16 +2,25 @@ import React from 'react'
 import Relay from 'react-relay'
 import {Text, View} from 'react-native'
 
+import styles from './Styles/MainPage.Style.js'
 
 /* export default class MainPage extends React.Component { */
 class MainPage extends React.Component {
   render () {
+    let items = this.props.allHackerNewsItems.allHackerNewsItems.edges
+    let itemsView = items.map((item) => {
+      return (
+        <View>
+          <Text>Title: {item.node.title} </Text>
+          <Text>URL: {item.node.url} </Text>
+          <Text>Score: {item.node.score} </Text>
+          <Text>Author: {item.node.author.username} </Text>
+        </View>
+      )
+    })
     return (
-      <View>
-        <Text>
-          Main Page
-          {JSON.stringify(this.props.allProducts)}
-        </Text>
+      <View style={styles.container}>
+        {itemsView}
       </View>
     )
   }

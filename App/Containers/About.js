@@ -16,14 +16,14 @@ export default class About extends React.Component {
   render () {
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.section}>Smish</Text>
-        <Text style={styles.body}>This is the initial app for Smish</Text>
+        <Text style={styles.section}>About</Text>
+        <Text style={styles.body}>This is the about page</Text>
         <TouchableHighlight
           style={styles.listItem}
           onPress={this.openSmish.bind(this)}
         >
           <Text>
-            Visit Our Website!
+            Visit Google
           </Text>
         </TouchableHighlight>
       </ScrollView>

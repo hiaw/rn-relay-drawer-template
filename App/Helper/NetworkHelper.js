@@ -2,7 +2,7 @@ import React from 'react'
 import {AsyncStorage} from 'react-native'
 import Relay from 'react-relay'
 
-import config from '../Navigation/publicURL.js'
+import publicURL from '../Navigation/publicURL.js'
 
 let setNetworkLayer = () => {
   return new Promise((resolve, reject) => {
@@ -19,7 +19,7 @@ let setNetworkLayer = () => {
           options.headers = {}
         }
         Relay.injectNetworkLayer(
-        new Relay.DefaultNetworkLayer(config.scapholdUrl, options)
+        new Relay.DefaultNetworkLayer(publicURL, options)
       )
         resolve(options)
       }

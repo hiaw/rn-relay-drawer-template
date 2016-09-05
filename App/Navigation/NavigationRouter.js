@@ -28,8 +28,8 @@ class NavigationRouter extends Component {
       <Router wrapBy={RelayRenderer()}>
         <Scene key='drawer' component={NavigationDrawer} open={false}>
           <Scene key='drawerChildrenWrapper' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
-            <Scene key='mainPage' route={mainNavigatorRoute} component={MainPage} renderLeftButton={NavItems.hamburgerButton} />
-            <Scene key='about' component={AboutScreen} renderLeftButton={NavItems.hamburgerButton} initial />
+            <Scene key='mainPage' route={mainNavigatorRoute} component={MainPage} renderLeftButton={NavItems.hamburgerButton} initial />
+            <Scene key='about' component={AboutScreen} renderLeftButton={NavItems.hamburgerButton} />
           </Scene>
         </Scene>
       </Router>

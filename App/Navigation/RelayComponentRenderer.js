@@ -4,8 +4,6 @@ import {View, Text, TouchableHighlight,} from 'react-native'
 import React, { PropTypes } from 'react'
 import Relay from 'react-relay'
 
-import NetworkLayer from './NetworkLayer.js'
-
 class RelayComponentRenderer extends React.Component
 {
   static propTypes = {

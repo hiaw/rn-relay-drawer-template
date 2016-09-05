@@ -10,7 +10,7 @@ class MainPage extends React.Component {
     let items = this.props.allHackerNewsItems.allHackerNewsItems.edges
     let itemsView = items.map((item) => {
       return (
-        <View>
+        <View key={item.node.id}>
           <Text>Title: {item.node.title} </Text>
           <Text>URL: {item.node.url} </Text>
           <Text>Score: {item.node.score} </Text>

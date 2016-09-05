@@ -8,7 +8,7 @@ import NavItems from './NavItems'
 import RelayRenderer from './RelayComponentRenderer.js'
 import {setNetworkLayer, renderRelayScene} from '../Helper/NetworkHelper.js'
 import Styles from './Styles/NavigationRouter.Style.js'
-import MainPage from '../Components/MainPage.js'
+import MainPage from '../Containers/MainPage.js'
 import AboutScreen from '../Containers/About.js'
 import HomeRoute from './Routes/HomeRoute.js'
 

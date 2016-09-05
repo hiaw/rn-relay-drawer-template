@@ -11,6 +11,7 @@ class MainPage extends React.Component {
     let itemsView = items.map((item) => {
       return (
         <View key={item.node.id}>
+          <Text style={{fontWeight: 'bold'}}>Data from Relay</Text>
           <Text>Title: {item.node.title} </Text>
           <Text>URL: {item.node.url} </Text>
           <Text>Score: {item.node.score} </Text>

@@ -1,5 +1,6 @@
 export default {
   container: {
-    marginTop: 50
+    backgroundColor: 'palegreen',
+    marginTop: 80
   }
 }

@@ -7,11 +7,10 @@ import NavItems from './NavItems'
 // screens identified by the router
 import RelayRenderer from './RelayComponentRenderer.js'
 import {setNetworkLayer, renderRelayScene} from '../Helper/NetworkHelper.js'
-import Styles from './Styles/NavigationContainerStyle'
+import Styles from './Styles/NavigationRouter.Style.js'
 import MainPage from '../Components/MainPage.js'
-import Page from '../Components/Page.js'
-import HomeRoute from './HomeRoute.js'
-import Home from '../Components/Home.js'
+import AboutScreen from '../Containers/About.js'
+import HomeRoute from './Routes/HomeRoute.js'
 
 class NavigationRouter extends Component {
   componentDidMount () {
@@ -19,23 +18,18 @@ class NavigationRouter extends Component {
   }
 
   render () {
-    let homeNavigatorRoute = {
-      title: 'Smish',
-      component: Home,
-      queryConfig: new HomeRoute({email: 't@t.t', orderBy: '-createdAt'})
-    }
     let mainNavigatorRoute = {
       title: 'Smish',
       component: MainPage,
       queryConfig: new HomeRoute({email: 't@t.t', orderBy: '-createdAt'})
     }
+
     return (
       <Router wrapBy={RelayRenderer()}>
         <Scene key='drawer' component={NavigationDrawer} open={false}>
           <Scene key='drawerChildrenWrapper' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
             <Scene key='mainPage' route={mainNavigatorRoute} component={MainPage} renderLeftButton={NavItems.hamburgerButton} />
-            <Scene key='home' route={homeNavigatorRoute} component={Home} renderLeftButton={NavItems.hamburgerButton} />
-            <Scene key='page' component={Page} renderLeftButton={NavItems.hamburgerButton} initial />
+            <Scene key='about' component={AboutScreen} renderLeftButton={NavItems.hamburgerButton} initial />
           </Scene>
         </Scene>
       </Router>

@@ -12,33 +12,25 @@ export default class DrawerContent extends Component {
     this.context.drawer.toggle()
   }
 
-  handleHome () {
-    this.toggleDrawer()
-    NavigationActions.home({type: ActionConst.RESET})
-  }
-
   handleMainPage () {
     this.toggleDrawer()
     NavigationActions.mainPage({type: ActionConst.RESET})
   }
 
-  handleFirstView () {
+  handleAbout() {
     this.toggleDrawer()
-    NavigationActions.page({type: ActionConst.RESET})
+    NavigationActions.about({type: ActionConst.RESET})
   }
 
   render () {
     return (
       <ScrollView>
-        <DrawerButton text='Home' onPress={this.handleHome} />
-        <DrawerButton text='Home' onPress={this.handleHome} />
-        <DrawerButton text='Home' onPress={this.handleHome} />
         <DrawerButton text='Main Page' onPress={this.handleMainPage} />
         <DrawerButton text='Main Page' onPress={this.handleMainPage} />
         <DrawerButton text='Main Page' onPress={this.handleMainPage} />
-        <DrawerButton text='First View' onPress={this.handleFirstView} />
-        <DrawerButton text='First View' onPress={this.handleFirstView} />
-        <DrawerButton text='First View' onPress={this.handleFirstView} />
+        <DrawerButton text='About' onPress={this.handleAbout} />
+        <DrawerButton text='About' onPress={this.handleAbout} />
+        <DrawerButton text='About' onPress={this.handleAbout} />
       </ScrollView>
     )
   }

@@ -2,14 +2,13 @@ import React from 'react'
 import Relay from 'react-relay'
 import {Text, View} from 'react-native'
 
-import styles from './Styles/MainPageStyle.js'
 
 /* export default class MainPage extends React.Component { */
 class MainPage extends React.Component {
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
+      <View>
+        <Text>
           Main Page
           {JSON.stringify(this.props.allProducts)}
         </Text>
@@ -18,7 +17,7 @@ class MainPage extends React.Component {
   }
 }
 
-export default Relay.createContainer(Home, {
+export default Relay.createContainer(MainPage, {
   initialVariables: {
     orderBy: null
   },

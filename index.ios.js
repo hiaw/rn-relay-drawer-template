@@ -1,4 +1,4 @@
 import {AppRegistry} from 'react-native'
 import Root from './App/Root.js'
 
-AppRegistry.registerComponent('relayUsingUniversalBoilerCode', () => Root)
+AppRegistry.registerComponent('rn_relay_drawer_template', () => Root)

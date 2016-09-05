@@ -2,7 +2,7 @@ import React from 'react'
 import {AsyncStorage} from 'react-native'
 import Relay from 'react-relay'
 
-import config from '../../config.js'
+import config from '../Navigation/publicURL.js'
 
 let setNetworkLayer = () => {
   return new Promise((resolve, reject) => {
